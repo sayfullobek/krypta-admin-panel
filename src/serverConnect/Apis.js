@@ -7,7 +7,7 @@ export const Apis = {
     //end auth
     sendPhoto: '/attachment/upload',
     deletePhoto: '/attachment',
-    getPhoto: 'http://localhost:8080/api/v1/attachment/download?id=',
+    getPhoto: 'https://krypta-server.herokuapp.com/api/v1/attachment/download?id=',
     coin: '/coin',
     vip: '/vips',
     pools: '/pools',
