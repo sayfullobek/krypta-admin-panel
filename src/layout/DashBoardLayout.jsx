@@ -6,9 +6,10 @@ import {Header} from "../component/Header";
 
 export const DashBoardLayout = () => {
     const token = localStorage.getItem("token")
+    const role = localStorage.getItem("role")
     return (
         <>
-            {token ? (
+            {token && role === "ADMIN" ? (
                 <div className='container-fluid page-body-wrapper'>
                     <Header/>
                     <SideBar/>

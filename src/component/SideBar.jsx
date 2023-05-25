@@ -5,62 +5,62 @@ import admin from '../utils/admin.json'
 export const SideBar = () => {
     const location = useLocation().pathname;
     const sideBardUtils = [
-        {type: 'premitive', name: 'Dashboard1', icon: 'icon-grid menu-icon', link: '/auth/krypta-valyuta/admin'},
+        {type: 'premitive', name: 'Asosiy', icon: 'icon-grid menu-icon', link: '/auth/krypta-valyuta/admin'},
         {
             type: 'premitive',
             name: 'coin',
-            icon: 'bi bi-globe menu-icon',
+            icon: 'bi bi-cash-coin menu-icon',
             link: '/auth/krypta-valyuta/admin/coins'
         }, {
             type: 'premitive',
             name: 'vip',
-            icon: 'bi bi-globe menu-icon',
+            icon: 'bi bi-bar-chart-steps menu-icon',
             link: '/auth/krypta-valyuta/admin/vips'
         }, {
             type: 'premitive',
             name: 'hovuzlar',
-            icon: 'bi bi-globe menu-icon',
+            icon: 'bi bi-arrow-repeat menu-icon',
             link: '/auth/krypta-valyuta/admin/pool'
         }, {
             type: 'premitive',
-            name: 'tarmoqlar',
-            icon: 'bi bi-globe menu-icon',
-            link: '/auth/krypta-valyuta/admin/coins'
+            name: 'xabarlar',
+            icon: 'bi bi-chat-dots menu-icon',
+            link: '/auth/krypta-valyuta/admin/notification'
         }, {
             type: 'premitive',
-            name: 'tarmoqlar',
-            icon: 'bi bi-globe menu-icon',
-            link: '/auth/krypta-valyuta/admin/coins'
+            name: 'yordam',
+            icon: 'bi bi-info-square menu-icon',
+            link: '/auth/krypta-valyuta/admin/help'
         }, {
             type: 'premitive',
-            name: 'tarmoqlar',
-            icon: 'bi bi-globe menu-icon',
-            link: '/auth/krypta-valyuta/admin/coins'
+            name: 'kirimlar tarixi',
+            icon: 'bi bi-repeat-1 menu-icon',
+            link: '/auth/krypta-valyuta/admin/history/pay'
         }, {
             type: 'premitive',
-            name: 'tarmoqlar',
-            icon: 'bi bi-globe menu-icon',
-            link: '/auth/krypta-valyuta/admin/coins'
+            name: 'tashlangan pul',
+            icon: 'bi bi-cash menu-icon',
+            link: '/auth/krypta-valyuta/admin/history/exit-pay'
         }, {
             type: 'premitive',
-            name: 'tarmoqlar',
-            icon: 'bi bi-globe menu-icon',
-            link: '/auth/krypta-valyuta/admin/coins'
+            name: 'pul yechish',
+            icon: 'bi bi-reply-all menu-icon',
+            link: '/auth/krypta-valyuta/admin/history/withdrawal-request'
         }, {
             type: 'premitive',
-            name: 'tarmoqlar',
-            icon: 'bi bi-globe menu-icon',
-            link: '/auth/krypta-valyuta/admin/coins'
+            name: 'yechilgan pul',
+            icon: 'bi bi-wallet2 menu-icon',
+            link: '/auth/krypta-valyuta/admin/history/withdrawal-request-exit'
         }, {
             type: 'premitive',
-            name: 'tarmoqlar',
-            icon: 'bi bi-globe menu-icon',
-            link: '/auth/krypta-valyuta/admin/coins'
+            name: 'feedback tarixi',
+            icon: 'bi bi-envelope menu-icon',
+            link: '/auth/krypta-valyuta/admin/history/feedback'
         }, {
             type: 'premitive',
-            name: 'tarmoqlar',
-            icon: 'bi bi-globe menu-icon',
-            link: '/auth/krypta-valyuta/admin/coins'
+            icon: 'bi bi-person-fill-gear menu-icon',
+            name: 'foydalauvchilar',
+            link: '/auth/krypta-valyuta/admin/users-list'
         },
     ]
     return (
@@ -118,14 +118,13 @@ const GetBtn = ({sideBardUtils, location}) => {
                     </li>
                 ) : (
                     <li className="nav-item" style={{width: '80%'}}>
-                        <Link className="nav-link"
-                              style={location === item.link ? {
-                                  backgroundColor: 'rgba(79,110,210,0.5)',
-                                  color: 'white'
-                              } : {}}
-                              to={item.link}>
-                            <i className={item.icon} style={location === item.link ? {color: 'white'} : {}}/>
-                            <span className="menu-title">{item.name}</span>
+                        <Link
+                            className={location === item.link ? "bg-primary nav-link w-100 btn" : "bg-light nav-link w-100 btn"}
+                            to={item.link}>
+                            <i className={item.icon}
+                               style={location === item.link ? {color: 'white'} : {color: 'black'}}/>
+                            <span
+                                className={location === item.link ? "menu-title text-light" : "menu-title text-dark"}>{item.name}</span>
                         </Link>
                     </li>
                 )

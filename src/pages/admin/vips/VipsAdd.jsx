@@ -105,12 +105,12 @@ export const VipsAdd = () => {
         let formData = new FormData();
         formData.append("photo", photo)
 
-        await SendPhoto(formData)
+        await SendPhoto(formData, "__vip_photoId__")
         const data = {
             name,
             minQuantifyAmount,
             maxQuantifyAmount,
-            photoId: localStorage.getItem("__coin_photoId__"),
+            photoId: localStorage.getItem("__vip_photoId__"),
             shareRatio,
             effectiveEmount,
             directlyPromoteMembers,

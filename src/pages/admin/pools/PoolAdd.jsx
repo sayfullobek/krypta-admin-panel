@@ -16,6 +16,8 @@ export const PoolAdd = () => {
     const [photoId, setPhotoId] = useState('')
     const [annualizedInterest, setAnnualizedInterest] = useState('')
     const [stakingMinimum, setStakingMinimum] = useState('')
+    const [min, setMin] = useState('')
+    const [max, setMax] = useState('')
     const [photo, setPhoto] = useState()
     const coinForm = [
         {name: 'photo', placeholder: 'poolsng rasimini kiriting', type: 'file', value: photo, setValue: setPhoto},
@@ -47,8 +49,14 @@ export const PoolAdd = () => {
             name: 'Minimal stavka',
             placeholder: 'Minimal stavka',
             type: 'number',
-            value: stakingMinimum,
-            setValue: setStakingMinimum
+            value: min,
+            setValue: setMin
+        }, {
+            name: 'Maximal stavka',
+            placeholder: 'Maximal stavka',
+            type: 'number',
+            value: max,
+            setValue: setMax
         }
     ]
     const saveVips = async () => {
@@ -57,7 +65,8 @@ export const PoolAdd = () => {
             enName: enName.trim().length === 0,
             ruName: ruName.trim().length === 0,
             annualizedInterest: annualizedInterest.trim().length === 0,
-            stakingMinimum: stakingMinimum.trim().length === 0,
+            min: min.trim().length === 0,
+            max: max.trim().length === 0,
         }
         if (check.uzName || check.enName || check.ruName || check.annualizedInterest || check.stakingMinimum) {
             return error("malumot bo'sh bo'lmasin")
@@ -66,14 +75,15 @@ export const PoolAdd = () => {
         let formData = new FormData();
         formData.append("photo", photo)
 
-        await SendPhoto(formData)
+        await SendPhoto(formData, "__pool_photoId__")
+        // setStakingMinimum(min + "-" + max)
         const data = {
             uzName,
             enName,
             ruName,
-            photoId: localStorage.getItem("__coin_photoId__"),
+            photoId: localStorage.getItem("__pool_photoId__"),
             annualizedInterest,
-            stakingMinimum
+            stakingMinimum: min + "-" + max
         }
         if (id === undefined || id === "" || id === "undefined") {
             await Save(data, Apis.pools, "", navigate, "pool")

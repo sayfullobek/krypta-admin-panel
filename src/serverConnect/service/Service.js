@@ -15,8 +15,12 @@
 // }
 //
 import toast from "react-hot-toast";
+import {isSuccess} from "../../handlers/auth";
+import {ApiController} from "../ApiController";
+import {Apis} from "../Apis";
+import {error, success} from "../../utils/MyToast";
 
-export const Save = async (data, url, id, navigate, navigateUrl) => {
+export const Save = async (data, url, id, navigate, navigateUrl, status) => {
     try {
         let res = ''
         if (id === undefined || id === "" || id === "undefined") {
@@ -25,11 +29,16 @@ export const Save = async (data, url, id, navigate, navigateUrl) => {
             res = await ApiController.doPut(id, url, data)
         }
         if (isSuccess(res.status)) {
-            toast.success(res.data.message)
+            if (status === undefined || status === "") {
+                success(res.data.message)
+            } else {
+                success("muvaffaqiyatli saqlandi")
+            }
             navigate(`/auth/krypta-valyuta/admin/${navigateUrl}`)
             localStorage.setItem("__coin_photoId__", "")
         }
     } catch (err) {
+        console.log(err)
         toast.error(err.response.data.message)
     }
 }
@@ -56,13 +65,13 @@ export const embeddedGet = async (url, setData, status) => {
     }
 }
 
-export const getOneAbout = async (url, id, setData, status) => {
+export const getOneAbout = async (url, id, status) => {
     try {
         const res = await ApiController.doGetOne(id, url)
         if (status === "data") {
-            setData(res.data)
+            return res.data
         } else if (status === "embedded") {
-            setData(res.data._embedded.list)
+            return res.data._embedded.list
         }
     } catch (err) {
     }
@@ -84,15 +93,10 @@ export const deleteService = async (id, url, navigate, navigateName, setModal, g
 }
 
 
-import {isSuccess} from "../../handlers/auth";
-import {ApiController} from "../ApiController";
-import {Apis} from "../Apis";
-import {error, success} from "../../utils/MyToast";
-
-export const SendPhoto = async (data) => {
+export const SendPhoto = async (data, local) => {
     try {
         const res = await ApiController.doPost(Apis.sendPhoto, data)
-        localStorage.setItem("__coin_photoId__", res.data)
+        localStorage.setItem(local, res.data)
     } catch (err) {
         error("xatolik")
     }

@@ -8,7 +8,7 @@ export const isSuccess = (is) => {
 
 export const logout = (navigate) => {
     localStorage.clear();
-    navigate('/')
+    navigate('/auth/login')
     window.location.reload()
 }
 

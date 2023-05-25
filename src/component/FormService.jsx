@@ -38,7 +38,8 @@ export const FormService = ({formName, formArr, method, sendPhoto, url}) => {
                                                     <option value="HAMMA">hammaga ochiq</option>
                                                 ) : (<></>)}
                                                 {item.arr.map(a => (
-                                                    <option value={a.id}>{a.name || a.firstName && a.lastName}</option>
+                                                    <option
+                                                        value={a.id}>{a.uzName || a.name || a.firstName && a.lastName}</option>
                                                 ))}
                                             </select>
                                         ) : item.type === "dropDown" ? (
@@ -71,20 +72,10 @@ export const FormService = ({formName, formArr, method, sendPhoto, url}) => {
                             ))}
                             <button onClick={() => method()} type="button" className="btn btn-primary mr-2">saqlash
                             </button>
-                            {formName === "kurs saqlash" ? (
-                                <Link to={"/auth/universal-academy/admin/course"} className={"btn btn-danger"}
-                                      onClick={() => deletePhoto()}>
-                                    orqaga
-                                    qaytish
-                                    va bekor
-                                    qilish
-                                </Link>
-                            ) : (
-                                <Link className="btn btn-danger" to={`/auth/krypta-valyuta/admin/${url}`}>orqaga
-                                    qaytish
-                                    va bekor
-                                    qilish</Link>
-                            )}
+                            <Link className="btn btn-danger" to={`/auth/krypta-valyuta/admin/${url}`}>orqaga
+                                qaytish
+                                va bekor
+                                qilish</Link>
                         </form>
                     </div>
                 </div>

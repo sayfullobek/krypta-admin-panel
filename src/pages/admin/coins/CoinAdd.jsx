@@ -50,7 +50,7 @@ export const CoinAdd = () => {
         let formData = new FormData();
         formData.append("photo", photo)
 
-        await SendPhoto(formData)
+        await SendPhoto(formData, "__coin_photoId__")
         const data = {
             name, percentage, dollar, photoId: localStorage.getItem("__coin_photoId__")
         }

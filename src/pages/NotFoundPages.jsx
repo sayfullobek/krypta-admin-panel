@@ -5,7 +5,7 @@ export const NotFoundPages = () => {
     return (
         <div>
             404
-            <Link to={"/"}>
+            <Link to={"/auth/krypta-valyuta/admin"}>
                 orqaga
             </Link>
         </div>

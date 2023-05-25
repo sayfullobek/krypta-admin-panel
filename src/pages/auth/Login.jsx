@@ -1,7 +1,7 @@
 import {Link, useNavigate} from "react-router-dom";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {LoginHandler} from "../../serverConnect/service/AuthService";
-import {stringDataIf} from "../../handlers/auth";
+import {isAuthenticated, stringDataIf} from "../../handlers/auth";
 import {error} from "../../utils/MyToast";
 
 export const Login = () => {
@@ -27,6 +27,14 @@ export const Login = () => {
         const data = {username, password, status}
         await LoginHandler(data, navigate)
     }
+    useEffect(() => {
+        const redirectAdminPanel = () => {
+            const token = localStorage.getItem('token');
+            const isAuth = isAuthenticated(token)
+            if (isAuth) return navigate('/auth/krypta-valyuta/admin')
+        }
+        redirectAdminPanel()
+    }, [])
     return (
         <div>
             <section className="container forms" style={{height: '60vh'}}>
@@ -44,9 +52,6 @@ export const Login = () => {
                                        onChange={e => setPassword(e.target.value)}/>
                                 <i className={seeCode ? "bi bi-eye eye-icon" : 'bi bi-eye-slash eye-icon'}
                                    onClick={() => setSeeCode(!seeCode)}/>
-                            </div>
-                            <div className="form-link">
-                                <Link to={"/auth/register"} className="forgot-pass">ro'yxatdan o'tish</Link>
                             </div>
                             <div className="field button-field">
                                 <button type={"button"}

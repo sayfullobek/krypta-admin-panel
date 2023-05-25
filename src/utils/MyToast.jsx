@@ -4,13 +4,13 @@ export const success = (text) => toast.success(text)
 export const error = (text) => toast.error(text)
 export const promise = (saveSettings, settings, text) => {
     toast.promise(
-        saveSettings(settings),
+        // saveSettings(settings),
         {
-            loading: 'Saving...',
-            success: <b>Settings saved!</b>,
-            error: <b>Could not save.</b>,
+            loading: 'saqlanyapti...',
+            success: <b>{text}!</b>,
+            error: <b>xatolik yuz berdi.</b>,
         }
-    );
+    ).then(r => r);
 }
 
 export const multiLine = (text) => {

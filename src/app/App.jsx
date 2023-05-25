@@ -12,6 +12,20 @@ import {Pools} from "../pages/admin/pools/Pools";
 import {PoolAdd} from "../pages/admin/pools/PoolAdd";
 import {PoolItem} from "../pages/admin/pools/PoolItem";
 import {AddInvest} from "../pages/admin/pools/invest/AddInvest";
+import {Notification} from "../pages/admin/notification/Notification";
+import {NotificationSend} from "../pages/admin/notification/NotificationSend";
+import {SendMessage} from "../pages/admin/notification/SendMessage";
+import {Message} from "../pages/admin/notification/Message";
+import {Help} from "../pages/admin/help/Help";
+import {HelpAdd} from "../pages/admin/help/HelpAdd";
+import {HistoryMoney} from "../pages/admin/historyKirim/HistoryMoney";
+import {SendMoneyByAdmin} from "../pages/admin/historyKirim/SendMoneyByAdmin";
+import {HistoryMoneyExit} from "../pages/admin/historyKirim/HistoryMoneyExit";
+import {WithdrawalRequest} from "../pages/admin/historyMoneyExit/WithdrawalRequest";
+import {WithdrawalExit} from "../pages/admin/historyMoneyExit/WithdrawalExit";
+import {FedbackHistory} from "../pages/admin/fedback/FedbackHistory";
+import {UsersList} from "../pages/admin/users/UsersList";
+import {UsersItem} from "../pages/admin/users/UsersItem";
 
 function App() {
     return (
@@ -29,9 +43,31 @@ function App() {
                     <Route path={"/auth/krypta-valyuta/admin/pool/add"} element={<PoolAdd/>}/>
                     <Route path={"/auth/krypta-valyuta/admin/pool/get-one/:id"} element={<PoolItem/>}/>
                     <Route path={"/auth/krypta-valyuta/admin/pool/get-one/:id/invest-add"} element={<AddInvest/>}/>
+                    <Route path={"/auth/krypta-valyuta/admin/notification"} element={<Notification/>}/>
+                    <Route path={"/auth/krypta-valyuta/admin/notification/send-all"} element={<NotificationSend/>}/>
+                    <Route path={"/auth/krypta-valyuta/admin/notification/send-message/:id"}
+                           element={<Message/>}/>
+                    <Route path={"/auth/krypta-valyuta/admin/notification/send-message/:id/add"}
+                           element={<SendMessage/>}/>
+                    <Route path={"/auth/krypta-valyuta/admin/help"} element={<Help/>}/>
+                    <Route path={"/auth/krypta-valyuta/admin/help/add"} element={<HelpAdd/>}/>
+                    <Route path={"/auth/krypta-valyuta/admin/history/pay"} element={<HistoryMoney/>}/>
+                    <Route path={"/auth/krypta-valyuta/admin/history/exit-pay"} element={<HistoryMoneyExit/>}/>
+                    <Route path={"/auth/krypta-valyuta/admin/history/pay/send-money/:archiveId"}
+                           element={<SendMoneyByAdmin/>}/>
+                    <Route path={"/auth/krypta-valyuta/admin/history/withdrawal-request"}
+                           element={<WithdrawalRequest/>}/>
+                    <Route path={"/auth/krypta-valyuta/admin/history/withdrawal-request-exit"}
+                           element={<WithdrawalExit/>}/>
+                    <Route path={"/auth/krypta-valyuta/admin/history/feedback"}
+                           element={<FedbackHistory/>}/>
+                    <Route path={"/auth/krypta-valyuta/admin/users-list"}
+                           element={<UsersList/>}/>
+                    <Route path={"/auth/krypta-valyuta/admin/users-list/:userId"}
+                           element={<UsersItem/>}/>
+                    <Route path={"*"} element={<NotFoundPages/>}/>
                 </Route>
                 <Route path={"/auth/login"} element={<Login/>}/>
-                <Route path={"*"} element={<NotFoundPages/>}/>
             </Routes>
         </BrowserRouter>
     )

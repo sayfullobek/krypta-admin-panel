@@ -14,7 +14,7 @@ export const VipsItem = () => {
     const [vips, setVips] = useState({})
     const getOne = async () => {
         try {
-            await getOneAbout(Apis.vip, id, setVips, "data")
+            setVips(await getOneAbout(Apis.vip, id, "data"))
             setLoading(true)
         } catch (err) {
         }
@@ -70,7 +70,8 @@ export const VipsItem = () => {
                             </h5>
                         </div>
                     </div>
-                    <DeleteModal id={id} modal={modal} setModal={setModal} url={Apis.vip} getAll={getOne} navigateName={"/auth/krypta-valyuta/admin/vips"}/>
+                    <DeleteModal id={id} modal={modal} setModal={setModal} url={Apis.vip} getAll={getOne}
+                                 navigateName={"/auth/krypta-valyuta/admin/vips"}/>
                 </div>
             ) : (
                 <Loader/>

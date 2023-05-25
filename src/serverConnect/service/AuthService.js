@@ -60,11 +60,10 @@ const saveLocalStorage = (res, navigate, status) => {
     localStorage.setItem('phoneNumber', status === "login" ? res.data.user.phoneNumber : res.data.getLogin.user.phoneNumber)
     localStorage.setItem('email', status === "login" ? res.data.user.email : res.data.getLogin.user.email)
     localStorage.setItem('referralCode', status === "login" ? res.data.user.referralCode : res.data.getLogin.user.referralCode)
-    localStorage.setItem('role', status === "login" ? res.data.user.role.roleName : res.data.getLogin.user.role.roleName)
+    localStorage.setItem('role', status === "login" ? res.data.user.roles[0].roleName : res.data.getLogin.user.roles[0].roleName)
     success('muvaffaqiyatli')
-    if (res.data.user.role.roleName === "ADMIN") {
+    console.log(res)
+    if (res.data.user.roles[0].roleName === "ADMIN") {
         navigate("/auth/krypta-valyuta/admin")
-    } else {
-        navigate(status === "login" ? "/me" : "/auth/register/user-info")
     }
 }

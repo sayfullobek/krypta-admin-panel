@@ -19,7 +19,7 @@ export const PoolItem = () => {
     const [invests, setInvests] = useState([])
     const getOne = async () => {
         try {
-            await getOneAbout(Apis.pools, id, setPools, "data")
+            setPools(await getOneAbout(Apis.pools, id, "data"))
             await embeddedGet(Apis.invest + "/pool/" + id, setInvests, "data")
             setLoading(true)
         } catch (err) {
