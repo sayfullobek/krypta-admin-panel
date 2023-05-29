@@ -11,7 +11,7 @@ export const Header = ({setBtn}) => {
                 <Link className="navbar-brand brand-logo mr-5" to="/auth/krypta-valyuta/admin">
                     <span className="text-primary ">{admin.name.substr(0, 1)}</span>{admin.name.substring(1)}
                 </Link>
-                <Link className="navbar-brand brand-logo-mini" to="/auth/universal-academy/admin/"><span
+                <Link className="navbar-brand brand-logo-mini" to="/auth/krypta-valyuta/admin/"><span
                     className={"text-primary"}>{admin.name}</span></Link>
             </div>
             <div className="navbar-menu-wrapper d-flex align-items-center justify-content-end">
